@@ -57,3 +57,52 @@ export type AuthContextType = {
   isFetching: boolean;
   refetch: () => void;
 };
+
+// src/types/index.ts
+export interface User {
+  id: string;
+  name: string;
+}
+
+export interface Message {
+  id: string;
+  content: string;
+  createdAt: string | Date;
+  userId: string;
+  user?: User;
+}
+
+export interface Auction {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl?: string;
+  startPrice: number;
+  currentPrice: number;
+  startTime: string | Date;
+  endTime: string | Date;
+  status: 'PENDING' | 'ACTIVE' | 'ENDED';
+  createdAt: string | Date;
+  updatedAt: string | Date;
+  createdBy: string;
+  user?: User;
+}
+
+export interface Bid {
+  id: string;
+  amount: number;
+  createdAt: string | Date;
+  userId: string;
+  auctionId: string;
+  user?: User;
+}
+
+export interface CreateAuctionInput {
+  title: string;
+  description: string;
+  imageUrl?: string;
+  startPrice: number;
+  startTime: Date | string;
+  endTime: Date | string;
+  createdBy: string;
+}
